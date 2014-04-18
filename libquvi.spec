@@ -1,21 +1,20 @@
 Summary:	A cross-platform library for parsing flash media stream
 Name:		libquvi
-Version:	0.4.1
+Version:	0.9.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
-# Source0-md5:	acc5a5da25a7f89c6ff5338d00eaaf58
-Patch0:		%{name}-am.patch
+# Source0-md5:	8e3f2134a6b3376934bd884b07dcdac5
 URL:		http://quvi.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
-BuildRequires:	libquvi-scripts
+BuildRequires:	libquvi-scripts >= 0.9
 BuildRequires:	libtool
 BuildRequires:	lua-devel
 BuildRequires:	pkg-config
-Requires:	libquvi-scripts
+Requires:	libquvi-scripts >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,7 +30,6 @@ Header files for libquvi library.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -59,14 +57,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %ghost %{_libdir}/libquvi.so.7
-%attr(755,root,root) %{_libdir}/libquvi.so.*.*.*
+%attr(755,root,root) %{_libdir}/libquvi-0.9-%{version}.so
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libquvi.so
-%{_libdir}/libquvi.la
-%{_mandir}/man3/libquvi.3*
-%{_includedir}/quvi
-%{_pkgconfigdir}/libquvi.pc
+%attr(755,root,root) %{_libdir}/libquvi-0.9.so
+%{_mandir}/man[37]/*
+%{_includedir}/quvi-0.9
+%{_pkgconfigdir}/libquvi-0.9.pc
 
