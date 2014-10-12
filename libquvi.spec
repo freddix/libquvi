@@ -1,7 +1,7 @@
 Summary:	A cross-platform library for parsing flash media stream
 Name:		libquvi
 Version:	0.9.4
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/quvi/%{name}-%{version}.tar.xz
@@ -47,6 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
